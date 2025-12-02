@@ -1,0 +1,93 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Activity, 
+  HeartPulse, 
+  Trophy, 
+  Users, 
+  Dumbbell, 
+  ArrowRight, 
+  CheckCircle2, 
+  XCircle,
+  Brain,
+  Stethoscope,
+  Target,
+  Camera
+} from 'lucide-react';
+
+// --- Brand Colors ---
+const BRAND = {
+  primary: '#6A1E2B',
+  secondary: '#0E0E0E',
+  accent: '#B0B0B0',
+  highlight: '#FFFFFF'
+};
+
+const Section = ({ children, className = "" }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className={`w-full py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto ${className}`}
+  >
+    {children}
+  </motion.div>
+);
+
+const StatBar = ({ label, percentage, description }) => (
+  <div className="mb-6">
+    <div className="flex justify-between mb-2">
+      <span className="text-white font-bold">{label}</span>
+      <span className="text-[#B0B0B0]">{percentage}%</span>
+    </div>
+    <div className="w-full bg-[#1a1a1a] rounded-full h-4 mb-2 overflow-hidden">
+      <motion.div 
+        initial={{ width: 0 }}
+        whileInView={{ width: `${percentage}%` }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="h-full rounded-full"
+        style={{ backgroundColor: BRAND.primary }}
+      />
+    </div>
+    <p className="text-xs text-[#B0B0B0] italic">{description}</p>
+  </div>
+);
+
+const ComparisonCard = ({ title, icon: Icon, points, isEp }) => (
+  <div className={`p-6 md:p-8 rounded-xl border ${isEp ? 'border-[#6A1E2B] bg-gradient-to-b from-[#1a0508] to-[#0E0E0E]' : 'border-[#333] bg-[#1a1a1a]'}`}>
+    <div className="flex items-center gap-4 mb-6">
+      <div className={`p-3 rounded-lg ${isEp ? 'bg-[#6A1E2B] text-white' : 'bg-[#333] text-[#B0B0B0]'}`}>
+        <Icon size={28} />
+      </div>
+      <h3 className="text-2xl font-bold text-white">{title}</h3>
+    </div>
+    <ul className="space-y-4">
+      {points.map((point, idx) => (
+        <li key={idx} className="flex items-start gap-3 text-[#B0B0B0]">
+          {isEp ? <CheckCircle2 className="text-[#6A1E2B] shrink-0 mt-1" size={18} /> : <div className="w-4 h-4 rounded-full border border-[#555] mt-1.5 shrink-0" />}
+          <span className="text-sm md:text-base">{point}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const ImagePlaceholder = ({ label, height = "h-64" }) => (
+  <div className={`w-full ${height} bg-[#1a1a1a] border-2 border-dashed border-[#333] rounded-xl flex flex-col items-center justify-center text-[#555] hover:border-[#6A1E2B] transition-colors group relative overflow-hidden`}>
+    <Camera size={48} className="mb-2 group-hover:text-[#6A1E2B] transition-colors" />
+    <span className="font-mono text-sm uppercase tracking-wider">{label}</span>
+    <div className="absolute inset-0 bg-[#6A1E2B]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+  </div>
+);
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState('clinical');
+
+  return (
+    <div className="min-h-screen bg-[#0E0E0E] text-white font-sans selection:bg-[#6A1E2B] selection:text-white overflow-x-hidden">
+      {/* HERO, sections, etc. – keep everything you pasted */}
+      {/* ...your entire App component code continues here unchanged... */}
+    </div>
+  );
+}
