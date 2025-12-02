@@ -1,158 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>PRJCT: LEGACY – Health & Performance</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>PRJCT: LEGACY – Health & Performance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CDN so all your className="..." styles work -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-[#0E0E0E] text-white">
+    <div id="root"></div>
 
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-    }
-  </style>
-</head>
-<body class="min-h-screen bg-[#0E0E0E] text-white overflow-x-hidden selection:bg-[#6A1E2B] selection:text-white">
-
-  <!-- HERO SECTION -->
-  <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-    <!-- Abstract background glow -->
-    <div class="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#6A1E2B] rounded-full blur-[150px] opacity-20 translate-x-1/2 -translate-y-1/2"></div>
-
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-      <!-- Left text block -->
-      <div>
-        <div class="flex items-center gap-4 mb-6">
-          <div class="h-1 w-12 bg-[#6A1E2B]"></div>
-          <span class="text-[#B0B0B0] tracking-[0.2em] uppercase text-sm">
-            Allied Health &amp; Performance
-          </span>
-        </div>
-
-        <h1 class="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-6">
-          PRJCT: <br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B0B0B0]">
-            LEGACY
-          </span>
-        </h1>
-
-        <p class="text-lg sm:text-xl text-[#B0B0B0] max-w-lg leading-relaxed mb-8">
-          Bridging the gap between clinical rehabilitation and high-performance athletics.
-          <span class="block mt-2 text-[#6A1E2B] font-bold">
-            Build a body that lasts.
-          </span>
-        </p>
-
-        <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="px-8 py-3 bg-[#6A1E2B] text-white font-bold rounded hover:bg-[#802535] transition-colors">
-            Legacy Health
-          </a>
-          <a href="#contact" class="px-8 py-3 border border-[#B0B0B0] text-white font-bold rounded hover:bg-white hover:text-black transition-colors">
-            Performance Coaching
-          </a>
-        </div>
-      </div>
-
-      <!-- Right image placeholder -->
-      <div class="relative">
-        <div class="w-full h-[420px] sm:h-[480px] lg:h-[500px] bg-[#1a1a1a] border-2 border-dashed border-[#333] rounded-xl flex flex-col items-center justify-center text-[#555] hover:border-[#6A1E2B] transition-colors group relative overflow-hidden">
-          <!-- simple camera icon using emoji -->
-          <div class="text-5xl mb-2 group-hover:text-[#6A1E2B] transition-colors">📷</div>
-          <span class="font-mono text-sm uppercase tracking-wider">Hero Action Shot</span>
-          <div class="absolute inset-0 bg-[#6A1E2B]/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- DISTINCTION: EP vs PHYSIO -->
-  <section class="bg-[#0a0a0a] border-y border-[#222]">
-    <div class="w-full py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-          What is an
-          <span class="text-[#6A1E2B]">Exercise Physiologist?</span>
-        </h2>
-        <p class="text-[#B0B0B0] text-base sm:text-lg">
-          Many confuse Exercise Physiology (EP) with Physiotherapy. While we work together, our roles are distinct.
-          Think of Physio as the "mechanic" fixing the acute breakdown, and EP as the "engineer" optimising the machine for the long haul.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <!-- Physio card -->
-        <div class="p-6 md:p-8 rounded-xl border border-[#333] bg-[#1a1a1a]">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="p-3 rounded-lg bg-[#333] text-[#B0B0B0] text-xl">🩺</div>
-            <h3 class="text-2xl font-bold text-white">Physiotherapy</h3>
-          </div>
-          <ul class="space-y-4 text-[#B0B0B0] text-sm md:text-base">
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-4 h-4 rounded-full border border-[#555] shrink-0"></span>
-              <span>Diagnosis of acute injuries</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-4 h-4 rounded-full border border-[#555] shrink-0"></span>
-              <span>Hands-on manual therapy</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-4 h-4 rounded-full border border-[#555] shrink-0"></span>
-              <span>Immediate pain relief</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-4 h-4 rounded-full border border-[#555] shrink-0"></span>
-              <span>Early-stage rehabilitation</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-4 h-4 rounded-full border border-[#555] shrink-0"></span>
-              <span>Focus: restoring normal function</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- EP card -->
-        <div class="p-6 md:p-8 rounded-xl border border-[#6A1E2B] bg-gradient-to-b from-[#1a0508] to-[#0E0E0E]">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="p-3 rounded-lg bg-[#6A1E2B] text-white text-xl">🏃‍♂️</div>
-            <h3 class="text-2xl font-bold text-white">Ex. Physiology (AEP)</h3>
-          </div>
-          <ul class="space-y-4 text-[#B0B0B0] text-sm md:text-base">
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-[#6A1E2B]">✔</span>
-              <span>Management of chronic conditions</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-[#6A1E2B]">✔</span>
-              <span>Exercise-as-medicine prescription</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-[#6A1E2B]">✔</span>
-              <span>Long-term behaviour change</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-[#6A1E2B]">✔</span>
-              <span>Strength &amp; conditioning for rehab</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-[#6A1E2B]">✔</span>
-              <span>Focus: optimising performance &amp; capacity</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SPECTRUM OF CARE / TABS -->
-  <section>
-    <div class="w-full py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-12 gap-12">
-        <!-- Left: narrative + buttons -->
-        <div class="lg:col-span-5 flex flex-col justify-center">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-6">
-            The Spectrum of <span class="text-[#6A1E2B]">Care</span>
-          </h2>
-          <p class="text-[#B0B0B
+    <!-- Vite entry -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
