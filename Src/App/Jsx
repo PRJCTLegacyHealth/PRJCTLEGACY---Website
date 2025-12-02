@@ -16,6 +16,11 @@ import {
 } from 'lucide-react';
 
 // --- Brand Colors ---
+// Primary: #6A1E2B (Deep Red)
+// Secondary: #0E0E0E (Rich Black)
+// Accent: #B0B0B0 (Silver/Grey)
+// Highlight: #FFFFFF (White)
+
 const BRAND = {
   primary: '#6A1E2B',
   secondary: '#0E0E0E',
@@ -86,8 +91,300 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0E0E0E] text-white font-sans selection:bg-[#6A1E2B] selection:text-white overflow-x-hidden">
-      {/* HERO, sections, etc. – keep everything you pasted */}
-      {/* ...your entire App component code continues here unchanged... */}
+      
+      {/* --- HERO SECTION --- */}
+      <header className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Abstract Background Element */}
+        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#6A1E2B] rounded-full blur-[150px] opacity-20 translate-x-1/2 -translate-y-1/2" />
+        
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-1 w-12 bg-[#6A1E2B]" />
+              <span className="text-[#B0B0B0] tracking-[0.2em] uppercase text-sm">Allied Health & Performance</span>
+            </div>
+            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-6">
+              PRJCT: <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B0B0B0]">LEGACY</span>
+            </h1>
+            <p className="text-xl text-[#B0B0B0] max-w-lg leading-relaxed mb-8">
+              Bridging the gap between clinical rehabilitation and high-performance athletics. 
+              <span className="block mt-2 text-[#6A1E2B] font-bold">Build a body that lasts.</span>
+            </p>
+            <div className="flex flex-wrap gap-4">
+               <button className="px-8 py-3 bg-[#6A1E2B] text-white font-bold rounded hover:bg-[#802535] transition-colors">
+                Legacy Health
+              </button>
+              <button className="px-8 py-3 border border-[#B0B0B0] text-white font-bold rounded hover:bg-white hover:text-black transition-colors">
+                Performance Coaching
+              </button>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 1 }}
+            className="relative"
+          >
+            <ImagePlaceholder label="Hero Action Shot" height="h-[500px]" />
+          </motion.div>
+        </div>
+      </header>
+
+      {/* --- THE DISTINCTION SECTION --- */}
+      <div className="bg-[#0a0a0a] border-y border-[#222]">
+        <Section>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">What is an <span className="text-[#6A1E2B]">Exercise Physiologist?</span></h2>
+            <p className="text-[#B0B0B0] text-lg">
+              Many confuse Exercise Physiology (EP) with Physiotherapy. While we work together, our roles are distinct. 
+              Think of Physio as the "Mechanic" fixing the acute breakdown, and EP as the "Engineer" optimizing the machine for the long haul.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <ComparisonCard 
+              title="Physiotherapy" 
+              icon={Stethoscope}
+              points={[
+                "Diagnosis of acute injuries",
+                "Hands-on manual therapy",
+                "Immediate pain relief",
+                "Early-stage rehabilitation",
+                "Focus: Restoring normal function"
+              ]} 
+              isEp={false}
+            />
+            <ComparisonCard 
+              title="Ex. Physiology (AEP)" 
+              icon={Activity}
+              points={[
+                "Management of chronic conditions",
+                "Exercise as medicine prescription",
+                "Long-term behavior change",
+                "Strength & conditioning for rehab",
+                "Focus: Optimizing performance & capacity"
+              ]} 
+              isEp={true}
+            />
+          </div>
+        </Section>
+      </div>
+
+      {/* --- DEMOGRAPHICS & DATA --- */}
+      <Section>
+        <div className="grid lg:grid-cols-12 gap-12">
+          {/* Left: Narrative */}
+          <div className="lg:col-span-5 flex flex-col justify-center">
+            <h2 className="text-4xl font-bold mb-6">The Spectrum of <span className="text-[#6A1E2B]">Care</span></h2>
+            <p className="text-[#B0B0B0] mb-8">
+              PRJCT: Legacy operates across the entire health continuum. Whether managing a heart condition or preparing for a national championship, the principles of physiology remain the same—only the application changes.
+            </p>
+            
+            {/* Interactive Tabs */}
+            <div className="flex flex-col gap-2">
+              <button 
+                onClick={() => setActiveTab('clinical')}
+                className={`p-4 text-left rounded-lg border transition-all ${activeTab === 'clinical' ? 'border-[#6A1E2B] bg-[#6A1E2B]/10 text-white' : 'border-transparent text-[#666] hover:text-white'}`}
+              >
+                <div className="flex items-center gap-3 font-bold text-lg">
+                  <HeartPulse size={20} /> Clinical Population
+                </div>
+              </button>
+              <button 
+                onClick={() => setActiveTab('general')}
+                className={`p-4 text-left rounded-lg border transition-all ${activeTab === 'general' ? 'border-[#6A1E2B] bg-[#6A1E2B]/10 text-white' : 'border-transparent text-[#666] hover:text-white'}`}
+              >
+                <div className="flex items-center gap-3 font-bold text-lg">
+                  <Users size={20} /> Healthy Population
+                </div>
+              </button>
+              <button 
+                onClick={() => setActiveTab('athlete')}
+                className={`p-4 text-left rounded-lg border transition-all ${activeTab === 'athlete' ? 'border-[#6A1E2B] bg-[#6A1E2B]/10 text-white' : 'border-transparent text-[#666] hover:text-white'}`}
+              >
+                <div className="flex items-center gap-3 font-bold text-lg">
+                  <Trophy size={20} /> Elite Performance
+                </div>
+              </button>
+            </div>
+          </div>
+
+          {/* Right: Dynamic Data Visualization */}
+          <div className="lg:col-span-7 bg-[#131313] p-8 rounded-2xl border border-[#222]">
+            {activeTab === 'clinical' && (
+              <motion.div key="clinical" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <div className="flex justify-between items-end mb-8">
+                  <h3 className="text-2xl font-bold">Chronic Disease Management</h3>
+                  <span className="text-[#6A1E2B] font-mono">PRJCT: LEGACY HEALTH</span>
+                </div>
+                <StatBar 
+                  label="Australians with Chronic Conditions" 
+                  percentage={47} 
+                  description="Nearly half of the population suffers from 1+ chronic conditions."
+                />
+                <StatBar 
+                  label="Condition Improvement with Exercise" 
+                  percentage={85} 
+                  description="Exercise is a Tier 1 treatment for Type 2 Diabetes, CVD, and Osteoporosis."
+                />
+                <div className="mt-8 grid grid-cols-2 gap-4">
+                    <ImagePlaceholder label="Clinical Rehab Photo" height="h-32" />
+                    <div className="bg-[#1a1a1a] p-4 rounded text-sm text-[#B0B0B0]">
+                        <strong className="text-white block mb-1">Services:</strong>
+                        • NDIS Support<br/>
+                        • Medicare (EPC)<br/>
+                        • DVA Services<br/>
+                        • WorkCover
+                    </div>
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === 'general' && (
+              <motion.div key="general" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <div className="flex justify-between items-end mb-8">
+                  <h3 className="text-2xl font-bold">General Wellness & Longevity</h3>
+                  <span className="text-[#6A1E2B] font-mono">PRJCT: LEGACY</span>
+                </div>
+                <StatBar 
+                  label="Adults Meeting Activity Guidelines" 
+                  percentage={15} 
+                  description="Most adults fail to meet the required strength training guidelines."
+                />
+                <StatBar 
+                  label="Reduced Mortality Risk" 
+                  percentage={40} 
+                  description="Regular resistance training is linked to a 40% reduction in all-cause mortality."
+                />
+                <div className="mt-8 grid grid-cols-2 gap-4">
+                    <ImagePlaceholder label="Coaching Photo" height="h-32" />
+                     <div className="bg-[#1a1a1a] p-4 rounded text-sm text-[#B0B0B0]">
+                        <strong className="text-white block mb-1">Services:</strong>
+                        • 1:1 Personal Training<br/>
+                        • Small Group Coaching<br/>
+                        • Body Composition<br/>
+                        • Functional Screening
+                    </div>
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === 'athlete' && (
+              <motion.div key="athlete" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <div className="flex justify-between items-end mb-8">
+                  <h3 className="text-2xl font-bold">Athlete Development</h3>
+                  <span className="text-[#6A1E2B] font-mono">PRJCT: LEGACY</span>
+                </div>
+                <StatBar 
+                  label="Injury Risk Reduction" 
+                  percentage={55} 
+                  description="Structured S&C programs reduce sports injury rates by over half."
+                />
+                 <StatBar 
+                  label="Performance Output Increase" 
+                  percentage={22} 
+                  description="Average power output increase after 12 weeks of periodized training."
+                />
+                <div className="mt-8 grid grid-cols-2 gap-4">
+                    <ImagePlaceholder label="Athlete Plyometrics" height="h-32" />
+                     <div className="bg-[#1a1a1a] p-4 rounded text-sm text-[#B0B0B0]">
+                        <strong className="text-white block mb-1">Services:</strong>
+                        • Sport Specific S&C<br/>
+                        • Load Management<br/>
+                        • Return to Sport Testing<br/>
+                        • Lactate Threshold Testing
+                    </div>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </div>
+      </Section>
+
+      {/* --- SERVICE GRID --- */}
+      <div className="bg-[#6A1E2B] text-white">
+        <Section>
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="p-6">
+              <Brain size={48} className="mx-auto mb-4 opacity-80" />
+              <h3 className="text-xl font-bold mb-2">Education</h3>
+              <p className="text-white/70 text-sm">We don't just train; we teach. Understanding the 'why' behind the movement ensures long-term adherence.</p>
+            </div>
+            <div className="p-6 border-x border-white/10">
+              <Target size={48} className="mx-auto mb-4 opacity-80" />
+              <h3 className="text-xl font-bold mb-2">Programming</h3>
+              <p className="text-white/70 text-sm">Evidence-based periodization. No guesswork, just calculated progression tailored to individual physiology.</p>
+            </div>
+            <div className="p-6">
+              <Dumbbell size={48} className="mx-auto mb-4 opacity-80" />
+              <h3 className="text-xl font-bold mb-2">Application</h3>
+              <p className="text-white/70 text-sm">High-level coaching cues and technique correction to ensure safety and maximize stimulus.</p>
+            </div>
+          </div>
+        </Section>
+      </div>
+
+      {/* --- THE LEGACY GALLERY --- */}
+      <Section>
+        <div className="flex flex-col md:flex-row items-end justify-between mb-12">
+          <div>
+             <h2 className="text-4xl font-bold mb-2">Coach in <span className="text-[#6A1E2B]">Action</span></h2>
+             <p className="text-[#B0B0B0]">Real people. Real movement. Real results.</p>
+          </div>
+          <button className="hidden md:flex items-center gap-2 text-[#6A1E2B] font-bold hover:text-white transition-colors">
+            View Full Gallery <ArrowRight size={18} />
+          </button>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-[600px] md:h-[400px]">
+          <div className="md:col-span-2 h-full">
+            <ImagePlaceholder label="Main Action Shot (Wide)" height="h-full" />
+          </div>
+          <div className="flex flex-col gap-4 h-full">
+             <ImagePlaceholder label="Clinic Consultation" height="h-full" />
+             <ImagePlaceholder label="Gym Floor Coaching" height="h-full" />
+          </div>
+        </div>
+      </Section>
+
+      {/* --- FOOTER / CTA --- */}
+      <footer className="border-t border-[#222] bg-[#050505] py-20">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-5xl md:text-6xl font-black mb-8 tracking-tighter">
+            READY TO BUILD YOUR <br/>
+            <span className="text-[#6A1E2B]">LEGACY?</span>
+          </h2>
+          <p className="text-[#B0B0B0] mb-12 text-lg max-w-2xl mx-auto">
+            Whether you are a clinic looking to refer, an athlete looking to win, or an individual looking to reclaim their health.
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-6 max-w-lg mx-auto">
+            <a href="#" className="block p-6 rounded-xl bg-[#1a1a1a] border border-[#333] hover:border-[#6A1E2B] transition-all group">
+              <h4 className="text-white font-bold text-xl mb-1 group-hover:text-[#6A1E2B]">Referrals (B2B)</h4>
+              <p className="text-[#666] text-sm">For GPs, Physios & Allied Health</p>
+            </a>
+            <a href="#" className="block p-6 rounded-xl bg-[#1a1a1a] border border-[#333] hover:border-[#6A1E2B] transition-all group">
+              <h4 className="text-white font-bold text-xl mb-1 group-hover:text-[#6A1E2B]">Consultations</h4>
+              <p className="text-[#666] text-sm">Book an Initial Assessment</p>
+            </a>
+          </div>
+
+          <div className="mt-16 pt-8 border-t border-[#1a1a1a] flex flex-col md:flex-row justify-between items-center text-[#444] text-sm">
+            <p>&copy; 2024 PRJCT: Legacy. All Rights Reserved.</p>
+            <div className="flex gap-6 mt-4 md:mt-0">
+              <span>Instagram</span>
+              <span>LinkedIn</span>
+              <span>Email</span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
