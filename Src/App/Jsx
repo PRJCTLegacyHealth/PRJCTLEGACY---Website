@@ -115,6 +115,9 @@ const App = () => {
     }
   };
 
+  // Your Halaxy Link
+  const bookingLink = "https://www.halaxy.com/profile/mr-nick-belvedere/exercise-physiologist/1148711";
+
   return (
     <div className="min-h-screen bg-[#0E0E0E] text-white font-sans selection:bg-[#6A1E2B] selection:text-white">
       
@@ -147,7 +150,7 @@ const App = () => {
               The Difference
             </button>
             <a 
-              href="https://www.halaxy.com/profile/mr-nick-belvedere/exercise-physiologist/1148711" 
+              href={bookingLink} 
               target="_blank" 
               rel="noopener noreferrer"
               className="px-10 py-4 border border-[#333] bg-[#1a1a1a] text-white font-bold rounded hover:bg-white hover:text-black transition-colors uppercase tracking-wide text-sm flex items-center justify-center"
@@ -176,7 +179,6 @@ const App = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
-            {/* Physio Card */}
             <div className="p-8 md:p-10 rounded-2xl border border-[#333] bg-[#111] hover:border-[#444] transition-colors">
               <div className="flex items-center gap-5 mb-8 pb-8 border-b border-[#222]">
                 <div className="p-4 rounded-xl bg-[#222] text-[#B0B0B0]">
@@ -201,7 +203,6 @@ const App = () => {
               </ul>
             </div>
             
-            {/* EP Card */}
             <div className="p-8 md:p-10 rounded-2xl border border-[#6A1E2B]/50 bg-gradient-to-b from-[#1a0508] to-[#0e0e0e] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#6A1E2B] blur-[80px] opacity-20"></div>
               <div className="flex items-center gap-5 mb-8 pb-8 border-b border-white/10 relative z-10">
@@ -333,7 +334,7 @@ const App = () => {
               <h4 className="text-white font-bold text-xl mb-1 group-hover:text-[#6A1E2B] uppercase tracking-tight">Referrals</h4>
               <p className="text-[#666] text-sm">Clinical pathways for GPs & Physios</p>
             </a>
-            <a href="https://www.halaxy.com/profile/mr-nick-belvedere/exercise-physiologist/1148711" target="_blank" rel="noopener noreferrer" className="block p-8 rounded-xl bg-[#1a1a1a] border border-[#333] hover:border-[#6A1E2B] transition-all group text-left">
+            <a href={bookingLink} target="_blank" rel="noopener noreferrer" className="block p-8 rounded-xl bg-[#1a1a1a] border border-[#333] hover:border-[#6A1E2B] transition-all group text-left">
               <h4 className="text-white font-bold text-xl mb-1 group-hover:text-[#6A1E2B] uppercase tracking-tight">Consultations</h4>
               <p className="text-[#666] text-sm">Book Initial Assessment</p>
             </a>
@@ -344,13 +345,4 @@ const App = () => {
             <div className="flex gap-8 mt-4 md:mt-0 font-medium">
               <a href="https://instagram.com/prjct_legacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Instagram size={16}/> Instagram</a>
               <a href="https://linkedin.com/company/prjct-legacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Linkedin size={16}/> LinkedIn</a>
-              <a href="mailto:info@prjctlegacy.com" className="hover:text-white transition-colors flex items-center gap-2"><Mail size={16}/> Email</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default App;
+              <a href="mailto:info
