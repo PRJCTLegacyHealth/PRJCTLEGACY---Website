@@ -345,4 +345,13 @@ const App = () => {
             <div className="flex gap-8 mt-4 md:mt-0 font-medium">
               <a href="https://instagram.com/prjct_legacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Instagram size={16}/> Instagram</a>
               <a href="https://linkedin.com/company/prjct-legacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Linkedin size={16}/> LinkedIn</a>
-              <a href="mailto:info
+              <a href="mailto:info@prjctlegacy.com" className="hover:text-white transition-colors flex items-center gap-2"><Mail size={16}/> Email</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
