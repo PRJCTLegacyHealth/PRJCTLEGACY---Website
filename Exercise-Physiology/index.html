@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Physiology | PRJCT: LEGACY</title>
+    <meta name="description" content="Clinical Exercise Physiology at PRJCT: LEGACY. Bridging the gap between clinical rehabilitation and high-performance athletics. Manage chronic conditions and optimize performance.">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #121212;
+            --accent: #6A1E2B; /* Brand Burgundy */
+            --accent-muted: rgba(106, 30, 43, 0.45);
+            --text-main: #e5e5e5;
+            --text-muted: #a0a0a0;
+            --bg-body: #050505;
+            --bg-card: #0f0f0f;
+            --border: #1f1f1f;
+            --max-width: 1200px;
+            --section-padding: 120px 0;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: #ffffff;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+        }
+
+        h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); margin-bottom: 2rem; }
+        h2 { font-size: clamp(2rem, 5vw, 2.75rem); margin-bottom: 1.5rem; }
+        h3 { font-size: 1.1rem; letter-spacing: 0.05em; margin-bottom: 1rem; color: var(--accent); }
+        h4 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff; }
+
+        p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted); font-weight: 300; }
+
+        .text-center { text-align: center; }
+        .max-w-700 { max-width: 700px; margin-left: auto; margin-right: auto; }
+        .max-w-900 { max-width: 900px; margin-left: auto; margin-right: auto; }
+
+        /* Layout */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        section {
+            padding: var(--section-padding);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        @media (max-width: 900px) {
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 650px) {
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            :root { --section-padding: 80px 0; }
+        }
+
+        /* Navigation */
+        header.nav {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .main-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .main-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .main-menu a:hover, .main-menu a.active {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .main-menu { display: none; } /* Mobile menu implementation omitted for brevity, focusing on desktop structure */
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1.25rem 2.5rem;
+            background-color: var(--accent);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            transition: var(--transition);
+            border: 1px solid var(--accent);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #fff;
+            border-color: var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 220px 0 140px;
+            background: radial-gradient(circle at top right, #2a0c11 0%, #050505 60%);
+        }
+
+        .hero-tagline {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            padding: 3rem;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            background: #111;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: left;
+        }
+
+        .card:hover::before { transform: scaleX(1); }
+
+        /* Lists */
+        .list-legacy { list-style: none; }
+        .list-legacy li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .list-legacy li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+            top: 0.2rem;
+        }
+
+        /* Step Process */
+        .step {
+            padding: 2.5rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            border-color: var(--accent-muted);
+        }
+
+        .step-num {
+            font-family: serif;
+            font-style: italic;
+            font-size: 3.5rem;
+            color: var(--accent-muted);
+            line-height: 1;
+            margin-bottom: 1rem;
+            display: block;
+            text-shadow: 0 0 15px rgba(106, 30, 43, 0.3);
+        }
+        
+        /* Stats */
+        .stat-bar { margin-bottom: 1.5rem; }
+        .stat-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 700; color: #fff; }
+        .stat-bg { background: #222; height: 10px; border-radius: 5px; overflow: hidden; }
+        .stat-fill { background: var(--accent); height: 100%; border-radius: 5px; width: 0; animation: fillBar 1.5s ease-out forwards; }
+        
+        @keyframes fillBar { to { width: var(--width); } }
+
+        /* Footer */
+        footer {
+            padding: 6rem 0;
+            background-color: var(--primary);
+            border-top: 5px solid var(--accent);
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .footer-legal {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            color: #444;
+            font-size: 0.8rem;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid { flex-direction: column; text-align: center; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="nav">
+        <div class="container nav-inner">
+            <a href="/" class="logo">PRJCT: <span>LEGACY</span></a>
+            <nav class="main-menu">
+                <a href="/Personal-Training/">Personal Training</a>
+                <a href="/Exercise-Physiology/" class="active">Exercise Physiology</a>
+            </nav>
+            <a href="#enquire" class="btn btn-outline" style="padding: 0.7rem 1.5rem; font-size: 0.8rem;">Enquire</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container text-center">
+                <span class="hero-tagline">Allied Health & Performance</span>
+                <h1>Physio vs. <br>Physiology.</h1>
+                <p class="max-w-700" style="margin-left: auto; margin-right: auto;">Bridging the gap between clinical rehabilitation and high-performance athletics. We don't just get you back on track; we build bodies that last.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
+                    <a href="#enquire" class="btn">Book Consultation</a>
+                    <a href="#distinction" class="btn btn-outline">The Difference</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Distinction -->
+        <section id="distinction">
+            <div class="container">
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div style="margin-bottom: 2rem;">
+                            <h3>Physiotherapy</h3>
+                            <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 2px;">The Mechanic</span>
+                        </div>
+                        <p>Focuses on the acute phase. Diagnosis, manual therapy, and immediate pain relief to get you moving again.</p>
+                        <ul class="list-legacy">
+                            <li>Diagnosis of acute injuries</li>
+                            <li>Hands-on manual therapy</li>
+                            <li>Immediate pain relief</li>
+                            <li>Early-stage rehabilitation</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-color: var(--accent-muted);">
+                        <div style="margin-bottom: 2rem;">
+                            <h3>Exercise Physiology</h3>
+                            <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 2px;">The Engineer</span>
+                        </div>
+                        <p>Focuses on the long term. Using exercise as medicine to manage chronic conditions and optimize performance.</p>
+                        <ul class="list-legacy">
+                            <li>Management of chronic conditions</li>
+                            <li>Exercise as medicine prescription</li>
+                            <li>Long-term behavior change</li>
+                            <li>Strength & conditioning for rehab</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spectrum of Care -->
+        <section style="background-color: var(--secondary);">
+            <div class="container">
+                <div class="text-center max-w-700" style="margin-bottom: 4rem;">
+                    <span class="hero-tagline">The Spectrum of Care</span>
+                    <h2>From Rehab to Performance.</h2>
+                    <p>Whether managing a health condition or preparing for competition, the principles of physiology remain the same.</p>
+                </div>
+                
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3>Clinical</h3>
+                        <p>Specialized management for chronic disease and injury rehabilitation. Supported by Medicare, DVA, NDIS, and WorkCover.</p>
+                        <div class="stat-bar">
+                            <div class="stat-header"><span>Chronic Conditions</span> <span>47%</span></div>
+                            <div class="stat-bg"><div class="stat-fill" style="--width: 47%;"></div></div>
+                            <small style="color: #666; font-size: 0.8rem; margin-top: 0.5rem; display: block;">Australians with 1+ chronic conditions</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>General Population</h3>
+                        <p>Evidence-based training for longevity, vitality, and general health. Move better, feel stronger, live longer.</p>
+                        <div class="stat-bar">
+                            <div class="stat-header"><span>Mortality Reduction</span> <span>40%</span></div>
+                            <div class="stat-bg"><div class="stat-fill" style="--width: 40%;"></div></div>
+                            <small style="color: #666; font-size: 0.8rem; margin-top: 0.5rem; display: block;">With regular resistance training</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Athlete</h3>
+                        <p>High-performance strength and conditioning. Data-driven programming to maximize output and minimize injury risk.</p>
+                        <div class="stat-bar">
+                            <div class="stat-header"><span>Injury Reduction</span> <span>55%</span></div>
+                            <div class="stat-bg"><div class="stat-fill" style="--width: 55%;"></div></div>
+                            <small style="color: #666; font-size: 0.8rem; margin-top: 0.5rem; display: block;">With structured S&C programs</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Protocol -->
+        <section>
+            <div class="container">
+                <div class="text-center max-w-700" style="margin-bottom: 5rem;">
+                    <span class="hero-tagline">Methodology</span>
+                    <h2>The Legacy Protocol</h2>
+                </div>
+                <div class="grid grid-4">
+                    <div class="step">
+                        <span class="step-num">01</span>
+                        <h4>Assess</h4>
+                        <p style="font-size: 0.9rem;">Comprehensive musculoskeletal screening and baseline metrics to understand your starting point.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">02</span>
+                        <h4>Program</h4>
+                        <p style="font-size: 0.9rem;">Bespoke exercise prescription tailored specifically to your pathology, limitations, and goals.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">03</span>
+                        <h4>Adapt</h4>
+                        <p style="font-size: 0.9rem;">Progressive overload and adaptation monitored through regular testing and feedback loops.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">04</span>
+                        <h4>Overcome</h4>
+                        <p style="font-size: 0.9rem;">Surpassing previous limitations and establishing new physical standards for your life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="enquire" style="border-bottom: none; background: linear-gradient(0deg, #121212 0%, #050505 100%);">
+            <div class="container text-center max-w-700">
+                <span class="hero-tagline">Start Your Journey</span>
+                <h2>Build Your Legacy.</h2>
+                <p>Expert clinical care meets high-performance coaching. Book your initial consultation today.</p>
+                <div style="margin-top: 3rem;">
+                    <a href="https://www.halaxy.com/profile/mr-nick-belvedere/exercise-physiologist/1148711" class="btn">Book Online</a>
+                    <br><br>
+                    <a href="mailto:info@prjctlegacy.com.au" style="color: var(--text-muted); text-decoration: none; border-bottom: 1px solid var(--border);">Or email us for more info</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="/" class="logo">PRJCT: <span>LEGACY</span></a>
+                    <p style="margin-top: 1rem; max-width: 300px;">Allied Health & Performance. Building stronger bodies for the long term.</p>
+                </div>
+                <div>
+                    <h3 style="color:#fff; font-size: 0.9rem; margin-bottom: 1.5rem;">Services</h3>
+                    <p><a href="/Personal-Training/" style="color: inherit; text-decoration: none;">Personal Training</a></p>
+                    <p><a href="/Exercise-Physiology/" style="color: inherit; text-decoration: none;">Exercise Physiology</a></p>
+                </div>
+                <div>
+                    <h3 style="color:#fff; font-size: 0.9rem; margin-bottom: 1.5rem;">Contact</h3>
+                    <p style="font-size: 0.9rem;">2 Pannikin St, Rochedale South QLD 4123</p>
+                    <p style="font-size: 0.9rem;">info@prjctlegacy.com.au</p>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p>&copy; 2026 PRJCT: LEGACY. All rights reserved.</p>
+                <p>Brisbane, QLD</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -114,6 +114,29 @@
 
         .logo span { color: var(--accent); }
 
+        .main-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .main-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .main-menu a:hover, .main-menu a.active {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .main-menu { display: none; }
+        }
+
         /* Buttons */
         .btn {
             display: inline-block;
@@ -299,7 +322,11 @@
 
     <header class="nav">
         <div class="container nav-inner">
-            <div class="logo">PRJCT: <span>LEGACY</span></div>
+            <a href="/" class="logo" style="text-decoration: none;">PRJCT: <span>LEGACY</span></a>
+            <nav class="main-menu">
+                <a href="/Personal-Training/" class="active">Personal Training</a>
+                <a href="/Exercise-Physiology/">Exercise Physiology</a>
+            </nav>
             <a href="#enquire" class="btn btn-outline" style="padding: 0.7rem 1.5rem; font-size: 0.8rem;">Enquire</a>
         </div>
     </header>
@@ -476,8 +503,13 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <div class="logo">PRJCT: <span>LEGACY</span></div>
+                    <a href="/" class="logo" style="text-decoration: none;">PRJCT: <span>LEGACY</span></a>
                     <p style="margin-top: 1rem; max-width: 300px;">Helping Brisbane build strength, confidence, and a body that lasts.</p>
+                </div>
+                <div>
+                    <h3 style="color:#fff; font-size: 0.9rem; margin-bottom: 1.5rem;">Services</h3>
+                    <p><a href="/Personal-Training/" style="color: inherit; text-decoration: none;">Personal Training</a></p>
+                    <p><a href="/Exercise-Physiology/" style="color: inherit; text-decoration: none;">Exercise Physiology</a></p>
                 </div>
                 <div>
                     <h3 style="color:#fff; font-size: 0.9rem; margin-bottom: 1.5rem;">Contact</h3>
