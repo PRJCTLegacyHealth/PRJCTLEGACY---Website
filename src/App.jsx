@@ -121,8 +121,21 @@ const App = () => {
   return (
     <div className="min-h-screen bg-[#0E0E0E] text-white font-sans selection:bg-[#6A1E2B] selection:text-white">
       
+      {/* --- HEADER MENU --- */}
+      <nav className="fixed top-0 w-full z-50 bg-[#0E0E0E]/80 backdrop-blur-md border-b border-[#222]">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <a href="/" className="text-xl font-black tracking-tighter">PRJCT: <span className="text-[#6A1E2B]">LEGACY</span></a>
+          <div className="hidden md:flex gap-8 items-center text-xs font-bold uppercase tracking-widest">
+            <a href="/" className="hover:text-[#6A1E2B] transition-colors">Home</a>
+            <a href="/Personal-Training/" className="hover:text-[#6A1E2B] transition-colors">Personal Training</a>
+            <a href="/Athlete-Coaching/" className="hover:text-[#6A1E2B] transition-colors">Athlete Coaching</a>
+            <a href={bookingLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-[#6A1E2B] rounded text-white transition-opacity hover:opacity-80">Book Now</a>
+          </div>
+        </div>
+      </nav>
+
       {/* --- HERO SECTION --- */}
-      <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#222]">
+      <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#222] pt-20">
         <div className="absolute top-0 right-1/2 w-[60vw] h-[60vw] bg-[#6A1E2B] rounded-full blur-[180px] opacity-10 translate-x-1/2 -translate-y-1/2"></div>
         
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center flex flex-col items-center animate-in fade-in slide-in-from-bottom duration-1000">
@@ -345,4 +358,13 @@ const App = () => {
             <div className="flex gap-8 mt-4 md:mt-0 font-medium">
               <a href="https://instagram.com/prjct_legacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Instagram size={16}/> Instagram</a>
               <a href="https://linkedin.com/company/prjct-legacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Linkedin size={16}/> LinkedIn</a>
-              <a href="mailto:info
+              <a href="mailto:info@prjctlegacy.com" className="hover:text-white transition-colors flex items-center gap-2"><Mail size={16}/> Email</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;

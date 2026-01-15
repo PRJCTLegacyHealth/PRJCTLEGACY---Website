@@ -110,9 +110,30 @@
             letter-spacing: 2px;
             font-size: 1.2rem;
             color: #fff;
+            text-decoration: none;
         }
 
         .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
         /* Buttons */
         .btn {
@@ -292,6 +313,7 @@
 
         @media (max-width: 600px) {
             .footer-grid { flex-direction: column; text-align: center; align-items: center; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -299,8 +321,13 @@
 
     <header class="nav">
         <div class="container nav-inner">
-            <div class="logo">PRJCT: <span>LEGACY</span></div>
-            <a href="#enquire" class="btn btn-outline" style="padding: 0.7rem 1.5rem; font-size: 0.8rem;">Enquire</a>
+            <a href="/" class="logo">PRJCT: <span>LEGACY</span></a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/Personal-Training/">Personal Training</a>
+                <a href="/Athlete-Coaching/">Athlete Coaching</a>
+                <a href="https://www.halaxy.com/profile/mr-nick-belvedere/exercise-physiologist/1148711" class="btn btn-outline" style="padding: 0.7rem 1.5rem; font-size: 0.8rem;">Book Now</a>
+            </nav>
         </div>
     </header>
 
