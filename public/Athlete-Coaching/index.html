@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRJCT: LEGACY | Athlete Development & Performance</title>
+    <meta name="description" content="Elite athlete coaching and performance training in Brisbane. PRJCT: LEGACY helps athletes reduce injury risk and maximize performance output through evidence-based S&C.">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #121212;
+            --accent: #6A1E2B; /* Brand Burgundy */
+            --accent-muted: rgba(106, 30, 43, 0.45);
+            --text-main: #e5e5e5;
+            --text-muted: #a0a0a0;
+            --bg-body: #050505;
+            --bg-card: #0f0f0f;
+            --border: #1f1f1f;
+            --max-width: 1200px;
+            --section-padding: 120px 0;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: #ffffff;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+        }
+
+        h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); margin-bottom: 2rem; }
+        h2 { font-size: clamp(2rem, 5vw, 2.75rem); margin-bottom: 1.5rem; }
+        h3 { font-size: 1.1rem; letter-spacing: 0.05em; margin-bottom: 1rem; color: var(--accent); }
+
+        p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted); font-weight: 300; }
+
+        .text-center { text-align: center; }
+        .max-w-700 { max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        /* Layout */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        section {
+            padding: var(--section-padding);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+        @media (max-width: 900px) {
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 650px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            :root { --section-padding: 80px 0; }
+        }
+
+        /* Navigation */
+        header.nav {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1.25rem 2.5rem;
+            background-color: var(--accent);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            transition: var(--transition);
+            border: 1px solid var(--accent);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #fff;
+            border-color: var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 220px 0 140px;
+            background: radial-gradient(circle at top right, #2a0c11 0%, #050505 60%);
+        }
+
+        .hero-tagline {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            padding: 3rem;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            background: #111;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: left;
+        }
+
+        .card:hover::before { transform: scaleX(1); }
+
+        /* Lists */
+        .list-legacy { list-style: none; }
+        .list-legacy li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .list-legacy li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+            top: 0.2rem;
+        }
+
+        /* Step Process */
+        .step {
+            padding: 3rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+        }
+
+        .step-num {
+            font-family: serif;
+            font-style: italic;
+            font-size: 3.5rem;
+            color: var(--accent-muted);
+            line-height: 1;
+            margin-bottom: 1rem;
+            display: block;
+            opacity: 1;
+            text-shadow: 0 0 15px rgba(106, 30, 43, 0.3);
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+
+        .faq-item summary {
+            list-style: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-right: 2rem;
+        }
+
+        .faq-item summary::after { 
+            content: "+"; 
+            color: var(--accent); 
+            transition: var(--transition);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .faq-item[open] summary::after { content: "−"; transform: rotate(180deg); }
+
+        .faq-item p {
+            margin-top: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 0;
+            background-color: var(--primary);
+            border-top: 5px solid var(--accent);
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .footer-legal {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            color: #444;
+            font-size: 0.8rem;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid { flex-direction: column; text-align: center; align-items: center; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="nav">
+        <div class="container nav-inner">
+            <a href="/" class="logo">PRJCT: <span>LEGACY</span></a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/Personal-Training/">Personal Training</a>
+                <a href="/Athlete-Coaching/">Athlete Coaching</a>
+                <a href="https://www.halaxy.com/profile/mr-nick-belvedere/exercise-physiologist/1148711" class="btn btn-outline" style="padding: 0.7rem 1.5rem; font-size: 0.8rem;">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <span class="hero-tagline">Bridging the Gap: Rehab to Performance.</span>
+                <h1>Elite Athlete <br>Development.</h1>
+                <p class="max-w-700" style="margin-left: 0;">We build athletes that last. By combining clinical exercise physiology with high-performance strength and conditioning, we help you overcome injury and set new physical standards.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="#enquire" class="btn">Apply for Coaching</a>
+                    <a href="#enquire" class="btn btn-outline">Performance Assessment</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section style="background-color: var(--secondary);">
+            <div class="container">
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h2 style="color: var(--accent); font-size: 4rem;">55%</h2>
+                        <h3>Injury Risk Reduction</h3>
+                        <p>Structured S&C programs reduce sports injury rates by over half, keeping you on the field longer.</p>
+                    </div>
+                    <div class="card">
+                        <h2 style="color: var(--accent); font-size: 4rem;">22%</h2>
+                        <h3>Performance Increase</h3>
+                        <p>Average power output increase after 12 weeks of periodized, evidence-based training.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pillars -->
+        <section>
+            <div class="container">
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3>Clinical Precision</h3>
+                        <p>Every program is built on a foundation of exercise physiology. We don't just guess; we assess your unique biomechanics and pathology.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Performance Focus</h3>
+                        <p>We take you beyond 'rehab'. Our goal is to return you to sport stronger, faster, and more resilient than before your injury.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Data-Driven Results</h3>
+                        <p>We track everything. From force production to mobility metrics, we use data to ensure your adaptation is on track.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology -->
+        <section id="methodology" style="background-color: var(--secondary);">
+            <div class="container">
+                <div class="grid grid-2" style="align-items: center;">
+                    <div>
+                        <span class="hero-tagline">The Process</span>
+                        <h2>The Legacy Protocol.</h2>
+                        <p>Our four-stage methodology designed to take any athlete from baseline to peak performance.</p>
+                        <ul class="list-legacy">
+                            <li><strong>ASSESS:</strong> Comprehensive musculoskeletal screening.</li>
+                            <li><strong>PROGRAM:</strong> Bespoke prescription tailored to your goals.</li>
+                            <li><strong>ADAPT:</strong> Progressive overload monitored through testing.</li>
+                            <li><strong>OVERCOME:</strong> Surpassing limitations and setting new standards.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3 style="color:#fff">Elite Coaching</h3>
+                        <p>Whether you are an emerging talent or a professional athlete, our coaching provides the technical oversight required to reach the next level.</p>
+                        <a href="#enquire" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">Start Your Journey</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" style="background-color: var(--bg-card);">
+            <div class="container max-w-700">
+                <h2 class="text-center" style="margin-bottom: 3rem;">Athlete FAQ</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>How is this different from standard S&C?</summary>
+                        <p>Standard Strength & Conditioning often follows a generic template. At PRJCT: LEGACY, we integrate Exercise Physiology, meaning we specifically account for your injury history, biomechanical discrepancies, and physiological profile.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Do I need to be injured to start?</summary>
+                        <p>No. While we specialize in return-to-play, the majority of our athletes train with us to prevent injury and optimize their current performance output.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Do you work with all sports?</summary>
+                        <p>Yes. The principles of human physiology and force production apply across all sporting disciplines. We adapt the specific training variables to meet the energy system and mechanical demands of your sport.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="enquire" style="border-bottom: none; background: linear-gradient(0deg, #121212 0%, #050505 100%);">
+            <div class="container text-center max-w-700">
+                <span class="hero-tagline">Ready to elevate?</span>
+                <h2>Build your legacy.</h2>
+                <p>Don't let injury define your career. Start training with a clinical edge today.</p>
+                <div style="margin-top: 3rem;">
+                    <a href="mailto:info@prjctlegacy.com.au" class="btn">Apply Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo">PRJCT: <span>LEGACY</span></div>
+                    <p style="margin-top: 1rem; max-width: 300px;">Helping athletes build strength, resilience, and a legacy that lasts.</p>
+                </div>
+                <div>
+                    <h3 style="color:#fff; font-size: 0.9rem; margin-bottom: 1.5rem;">Contact</h3>
+                    <p style="font-size: 0.9rem;">2 Pannikin St, Rochedale South QLD 4123</p>
+                    <p style="font-size: 0.9rem;">(Inside Fitness Cartel Springwood)</p>
+                    <p style="font-size: 0.9rem;">info@prjctlegacy.com.au</p>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p>&copy; 2026 PRJCT: LEGACY – Health & Performance. All rights reserved.</p>
+                <p>Brisbane, QLD</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
