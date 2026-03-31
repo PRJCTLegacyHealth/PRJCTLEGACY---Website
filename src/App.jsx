@@ -116,7 +116,7 @@ const App = () => {
   };
 
   // Your Halaxy Link
-  const bookingLink = "https://www.halaxy.com/profile/mr-nick-belvedere/exercise-physiologist/1148711";
+  const bookingLink = "https://www.halaxy.com/book/appointment/mr-nick-belvedere/exercise-physiologist/1720253/1319073";
 
   return (
     <div className="min-h-screen bg-[#0E0E0E] text-white font-sans selection:bg-[#6A1E2B] selection:text-white">
@@ -345,4 +345,13 @@ const App = () => {
             <div className="flex gap-8 mt-4 md:mt-0 font-medium">
               <a href="https://instagram.com/prjct_legacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Instagram size={16}/> Instagram</a>
               <a href="https://linkedin.com/company/prjct-legacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Linkedin size={16}/> LinkedIn</a>
-              <a href="mailto:info
+              <a href="mailto:info@prjctlegacy.com.au" className="hover:text-white transition-colors flex items-center gap-2"><Mail size={16}/> Email</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
