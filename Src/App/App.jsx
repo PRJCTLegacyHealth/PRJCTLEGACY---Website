@@ -24,7 +24,7 @@ import {
  * Single-file React component using Tailwind CSS and Lucide-React.
  */
 
-const App = () => {
+const HomePage = () => {
   const [activeTab, setActiveTab] = useState('clinical');
   const [isVisible, setIsVisible] = useState({});
   const sectionRefs = useRef({});
