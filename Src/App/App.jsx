@@ -151,6 +151,14 @@ const HomePage = () => {
             >
               The Difference
             </button>
+
+            <Link
+              to="/articles"
+              className="px-10 py-4 border border-[#333] bg-[#111] text-white font-bold rounded hover:bg-white hover:text-black transition-colors uppercase tracking-wide text-sm flex items-center justify-center"
+            >
+              Articles
+            </Link>
+
             <a 
               href="https://www.halaxy.com/book/appointment/mr-nick-belvedere/exercise-physiologist/1720253/1319073"
               target="_blank" 
