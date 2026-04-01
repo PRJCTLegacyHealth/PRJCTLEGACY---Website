@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from "react";
 
 const articles = [
   {
@@ -58,76 +58,178 @@ export default function Articles() {
   }, [search, category]);
 
   return (
-    <div className="min-h-screen bg-[#0E0E0E] text-white px-6 py-16">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-[#B0B0B0] uppercase tracking-[0.3em] text-xs mb-4">
-          PRJCT: Legacy Articles
-        </p>
-
-        <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6">
-          Articles
-        </h1>
-
-        <p className="text-[#B0B0B0] text-lg max-w-2xl mb-10">
-          Evidence-based writing on rehab, pain, performance, recovery, and training.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-4 mb-6">
-          <input
-            type="text"
-            placeholder="Search articles..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full p-4 rounded-xl bg-[#111] border border-[#222] text-white"
-          />
-
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="w-full p-4 rounded-xl bg-[#111] border border-[#222] text-white"
-          >
-            <option value="all">All Categories</option>
-            <option value="Pain & Rehab">Pain & Rehab</option>
-            <option value="Strength & Performance">Strength & Performance</option>
-            <option value="Mobility">Mobility</option>
-          </select>
+    <div style={styles.page}>
+      <header style={styles.hero}>
+        <div style={styles.container}>
+          <p style={styles.eyebrow}>Evidence-based articles</p>
+          <h1 style={styles.title}>Health, rehab, and performance insights.</h1>
+          <p style={styles.subtitle}>
+            Explore practical articles on pain, rehab, strength training,
+            movement, recovery, and performance.
+          </p>
         </div>
+      </header>
 
-        <p className="text-[#B0B0B0] mb-8">
-          Showing {filteredArticles.length} article{filteredArticles.length !== 1 ? "s" : ""}
-        </p>
+      <section style={styles.section}>
+        <div style={styles.container}>
+          <div style={styles.controls}>
+            <input
+              type="text"
+              placeholder="Search articles..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              style={styles.input}
+            />
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {filteredArticles.map((article) => (
-            <div
-              key={article.title}
-              className="rounded-2xl border border-[#222] bg-[#111] overflow-hidden"
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              style={styles.select}
             >
-              <div className="p-4 bg-gradient-to-r from-[#6A1E2B] to-[#1a1a1a] text-sm uppercase tracking-wider">
-                {article.category}
-              </div>
+              <option value="all">All Categories</option>
+              <option value="Pain & Rehab">Pain & Rehab</option>
+              <option value="Strength & Performance">
+                Strength & Performance
+              </option>
+              <option value="Mobility">Mobility</option>
+            </select>
+          </div>
 
-              <div className="p-6">
-                <div className="flex gap-2 flex-wrap mb-4">
-                  <span className="text-xs text-[#B0B0B0] border border-[#333] rounded-full px-3 py-1">
-                    {article.readTime}
-                  </span>
-                  <span className="text-xs text-[#B0B0B0] border border-[#333] rounded-full px-3 py-1">
-                    {article.date}
-                  </span>
+          <p style={styles.results}>
+            Showing {filteredArticles.length} article
+            {filteredArticles.length !== 1 ? "s" : ""}
+          </p>
+
+          <div style={styles.grid}>
+            {filteredArticles.map((article) => (
+              <div key={article.title} style={styles.card}>
+                <div style={styles.thumb}>{article.category}</div>
+                <div style={styles.cardBody}>
+                  <div style={styles.metaRow}>
+                    <span style={styles.tag}>{article.category}</span>
+                    <span style={styles.tag}>{article.readTime}</span>
+                  </div>
+
+                  <h3 style={styles.cardTitle}>{article.title}</h3>
+                  <p style={styles.cardText}>{article.excerpt}</p>
+
+                  <a href={article.url} style={styles.link}>
+                    Read more
+                  </a>
                 </div>
-
-                <h2 className="text-xl font-bold mb-3">{article.title}</h2>
-                <p className="text-[#B0B0B0] mb-4">{article.excerpt}</p>
-
-                <a href={article.url} className="text-white font-bold hover:text-[#B0B0B0]">
-                  Read more
-                </a>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
+
+const styles = {
+  page: {
+    background: "#0e0e0e",
+    color: "#ffffff",
+    minHeight: "100vh",
+    fontFamily: "Arial, sans-serif",
+  },
+  container: {
+    width: "min(1100px, calc(100% - 2rem))",
+    margin: "0 auto",
+  },
+  hero: {
+    padding: "5rem 0 3rem",
+    borderBottom: "1px solid rgba(255,255,255,0.08)",
+    background:
+      "radial-gradient(circle at top right, rgba(106,30,43,0.35), transparent 30%), linear-gradient(180deg, #111111 0%, #0e0e0e 100%)",
+  },
+  eyebrow: {
+    color: "#b0b0b0",
+    textTransform: "uppercase",
+    letterSpacing: "0.14em",
+    fontSize: "0.8rem",
+  },
+  title: {
+    fontSize: "clamp(2.2rem, 4vw, 4rem)",
+    lineHeight: 1.05,
+    margin: "0.5rem 0 1rem",
+  },
+  subtitle: {
+    color: "#b0b0b0",
+    maxWidth: "700px",
+    fontSize: "1.05rem",
+  },
+  section: {
+    padding: "2rem 0 4rem",
+  },
+  controls: {
+    display: "grid",
+    gridTemplateColumns: "2fr 1fr",
+    gap: "1rem",
+    marginBottom: "1rem",
+  },
+  input: {
+    padding: "1rem",
+    borderRadius: "12px",
+    border: "1px solid rgba(255,255,255,0.08)",
+    background: "#151515",
+    color: "#fff",
+  },
+  select: {
+    padding: "1rem",
+    borderRadius: "12px",
+    border: "1px solid rgba(255,255,255,0.08)",
+    background: "#151515",
+    color: "#fff",
+  },
+  results: {
+    color: "#b0b0b0",
+    marginBottom: "1.5rem",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "1.25rem",
+  },
+  card: {
+    background: "#1b1b1b",
+    border: "1px solid rgba(255,255,255,0.08)",
+    borderRadius: "18px",
+    overflow: "hidden",
+  },
+  thumb: {
+    padding: "1rem",
+    background:
+      "linear-gradient(135deg, rgba(106,30,43,0.88), rgba(24,24,24,0.95))",
+    fontSize: "0.8rem",
+    textTransform: "uppercase",
+    letterSpacing: "0.08em",
+  },
+  cardBody: {
+    padding: "1.2rem",
+  },
+  metaRow: {
+    display: "flex",
+    gap: "0.5rem",
+    flexWrap: "wrap",
+    marginBottom: "0.8rem",
+  },
+  tag: {
+    padding: "0.35rem 0.7rem",
+    borderRadius: "999px",
+    border: "1px solid rgba(255,255,255,0.08)",
+    color: "#b0b0b0",
+    fontSize: "0.8rem",
+  },
+  cardTitle: {
+    margin: "0 0 0.75rem",
+  },
+  cardText: {
+    color: "#b0b0b0",
+    marginBottom: "1rem",
+  },
+  link: {
+    color: "#fff",
+    fontWeight: 700,
+  },
+};
