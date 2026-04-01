@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import {
+  Instagram,
+  Linkedin,
+  Activity
+} from 'lucide-react';
+import Articles from './Articles';
 import { 
   Plus, 
   Users, 
