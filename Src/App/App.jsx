@@ -1,16 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import {
-  Instagram,
-  Linkedin,
-  Activity
-} from 'lucide-react';
-import Articles from './Articles';
-import { 
-  Plus, 
-  Users, 
-  BarChart3, 
-  CheckCircle2, 
+  Plus,
+  Users,
+  BarChart3,
+  CheckCircle2,
   ChevronRight,
   Instagram,
   Linkedin,
@@ -18,6 +12,7 @@ import {
   Clock,
   Activity
 } from 'lucide-react';
+import Articles from './Articles';
 
 /**
  * PRJCT: Legacy - Allied Health & Performance Infographic
