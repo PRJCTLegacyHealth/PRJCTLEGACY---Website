@@ -10,13 +10,16 @@ import {
   Linkedin,
   Mail,
   Clock,
-  Activity
+  Activity,
+  Menu,
+  X
 } from 'lucide-react';
-import Articles from './Articles';
+import Articles from './Articles.jsx';
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('clinical');
   const [isVisible, setIsVisible] = useState({});
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const sectionRefs = useRef({});
 
   useEffect(() => {
@@ -137,8 +140,95 @@ const HomePage = () => {
   const bookingLink =
     'https://www.halaxy.com/profile/mr-nick-belvedere/exercise-physiologist/1148711';
 
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
     <div className="min-h-screen bg-[#0E0E0E] text-white font-sans selection:bg-[#6A1E2B] selection:text-white">
+      <nav className="sticky top-0 z-50 border-b border-[#222] bg-[#0E0E0E]/95 backdrop-blur">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <Link
+            to="/"
+            className="text-white font-black tracking-[0.12em] text-sm md:text-base uppercase"
+          >
+            PRJCT: LEGACY
+          </Link>
+
+          <div className="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wide">
+            <a href="#distinction" className="text-[#B0B0B0] hover:text-white transition-colors">
+              Difference
+            </a>
+            <a href="#data" className="text-[#B0B0B0] hover:text-white transition-colors">
+              Spectrum
+            </a>
+            <a href="#protocol" className="text-[#B0B0B0] hover:text-white transition-colors">
+              Protocol
+            </a>
+            <Link to="/articles" className="text-[#B0B0B0] hover:text-white transition-colors">
+              Articles
+            </Link>
+            <a
+              href={bookingLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded bg-[#6A1E2B] text-white hover:bg-[#6A1E2B]/80 transition-colors"
+            >
+              Book Now
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="md:hidden text-white"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-[#222] bg-[#111] px-6 py-4 flex flex-col gap-4 text-sm font-semibold uppercase tracking-wide">
+            <a
+              href="#distinction"
+              onClick={closeMobileMenu}
+              className="text-[#B0B0B0] hover:text-white transition-colors"
+            >
+              Difference
+            </a>
+            <a
+              href="#data"
+              onClick={closeMobileMenu}
+              className="text-[#B0B0B0] hover:text-white transition-colors"
+            >
+              Spectrum
+            </a>
+            <a
+              href="#protocol"
+              onClick={closeMobileMenu}
+              className="text-[#B0B0B0] hover:text-white transition-colors"
+            >
+              Protocol
+            </a>
+            <Link
+              to="/articles"
+              onClick={closeMobileMenu}
+              className="text-[#B0B0B0] hover:text-white transition-colors"
+            >
+              Articles
+            </Link>
+            <a
+              href={bookingLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMobileMenu}
+              className="px-4 py-3 rounded bg-[#6A1E2B] text-white hover:bg-[#6A1E2B]/80 transition-colors text-center"
+            >
+              Book Now
+            </a>
+          </div>
+        )}
+      </nav>
+
       <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#222]">
         <div className="absolute top-0 right-1/2 w-[60vw] h-[60vw] bg-[#6A1E2B] rounded-full blur-[180px] opacity-10 translate-x-1/2 -translate-y-1/2"></div>
 
@@ -159,8 +249,7 @@ const HomePage = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-[#B0B0B0] max-w-2xl mx-auto leading-relaxed mb-10">
-            Bridging the gap between clinical rehabilitation and high-performance
-            athletics.
+            Bridging the gap between clinical rehabilitation and high-performance athletics.
             <span className="block mt-4 text-white font-bold">
               I don’t just get you back on track,{' '}
               <span className="text-[#6A1E2B]">I build bodies that last.</span>
