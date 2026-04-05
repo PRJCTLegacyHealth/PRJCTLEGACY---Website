@@ -1,5 +1,0 @@
-﻿{
-  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
-  "Domain": "prjctlegacyhealth.com.au",
-  "Id": "51382922-c58e-4e84-982a-4118dc156bad"
-}
